@@ -18,7 +18,7 @@ const port = 5000
 const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true });
 client.connect(err => {
   const servicecollotion = client.db("creative-agency").collection("service");
-
+  console.log(err);
   app.post('/servicecollotion' , (req,res) => {
       const service = req.body;
       servicecollotion.insertOne(service)
