@@ -13,9 +13,7 @@ app.use(cors());
 
 const port = 5000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 
 const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true });
 client.connect(err => {
@@ -25,9 +23,13 @@ client.connect(err => {
       const service = req.body;
       servicecollotion.insertOne(service)
       .then(result => {
-          res.send(result.insertedCount > 0)
+          res.send(result)
       })
   })
 });
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 app.listen(process.env.PORT || port)
