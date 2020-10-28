@@ -27,7 +27,7 @@ client.connect(err => {
       })
   })
 });
-app.post('/massage' , (req,res) => {
+app.post('/massages' , (req,res) => {
   const massage = req.body;
   massages.insertOne(massage)
   .then(result => {
