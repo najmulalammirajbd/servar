@@ -27,6 +27,14 @@ client.connect(err => {
       })
   })
 });
+app.post('/massage' , (req,res) => {
+  const massage = req.body;
+  massages.insertOne(massage)
+  .then(result => {
+      res.send(result)
+  })
+})
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
