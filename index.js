@@ -27,13 +27,17 @@ client.connect(err => {
       })
   })
 });
-app.post('/massages' , (req,res) => {
-  const massage = req.body;
-  massages.insertOne(massage)
-  .then(result => {
-      res.send(result)
+client.connect(err => {
+  const massages = client.db("creative-agency").collection("service");
+  console.log(err);
+  app.post('/massages' , (req,res) => {
+      const massage = req.body;
+      massages.insertOne(massage)
+      .then(result => {
+          res.send(result)
+      })
   })
-})
+});
 
 
 app.get('/', (req, res) => {
